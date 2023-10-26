@@ -1,0 +1,13 @@
+
+# LaTex Auxiliary compile files
+*/aux/
+
+# check this cloud folder to retrieve assets
+# and download theses BIG csv file 
+# assets/
+
+# Lesson related
+CMs/
+
+*.zip
+*.7z
