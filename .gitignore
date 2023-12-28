@@ -4,10 +4,15 @@
 
 # check this cloud folder to retrieve assets
 # and download theses BIG csv file 
-# assets/
+assets/
 
 # Lesson related
 CMs/
+
+temp/
+save/
+
+*-RENDER/
 
 *.zip
 *.7z

@@ -1,0 +1,18 @@
+\section{Comparison}\label{sec:comparison}
+
+$\begin{matrix}
+                                             & Query 0 & Query 1 & Query 2  & Aggregate 1 & Aggregate 2 & Aggregate 3 \\
+        \hline
+        \text{postgreSQL no opti}            & 1.7572s & 5.8131s & 9.4128s  & 1.1292s     & 18.4276s    & 1.8664s     \\
+        \text{postgreSQL index on medallion} & 0.0016s & 5.6706s & 13.7034s & 1.5556s     & 19.6138s    & 3.0424s     \\
+        \text{postgreSQL index + cluster}    &         &         &          &             &             &             \\
+        \text{duckDB no opti}                & 0.0003s & 0.0004s & 0.0003s  & 0.0885s     & 0.1041s     & 0.0017s
+    \end{matrix}$
+
+% First example is 2D and 3D math expressions plotted side-by-side.
+
+% \begin{tikzpicture}
+%     \begin{axis}
+%         \addplot[color=red]{exp(x)};
+%     \end{axis}
+% \end{tikzpicture}

@@ -1,0 +1,176 @@
+% -------------------------------------------------------------------------- %
+%                                  Commands                                  %
+% -------------------------------------------------------------------------- %
+
+\makeatletter
+\newsavebox\myboxA
+\newsavebox\myboxB
+\newlength\mylenA
+
+\newcommand*\xoverline[2][0.75]{%
+    \sbox{\myboxA}{$\m@th#2$}%
+    \setbox\myboxB\null% Phantom box
+    \ht\myboxB=\ht\myboxA%
+    \dp\myboxB=\dp\myboxA%
+    \wd\myboxB=#1\wd\myboxA% Scale phantom
+    \sbox\myboxB{$\m@th\overline{\copy\myboxB}$}%  Overlined phantom
+    \setlength\mylenA{\the\wd\myboxA}%   calc width diff
+    \addtolength\mylenA{-\the\wd\myboxB}%
+    \ifdim\wd\myboxB<\wd\myboxA%
+       \rlap{\hskip 0.5\mylenA\usebox\myboxB}{\usebox\myboxA}%
+    \else
+        \hskip -0.5\mylenA\rlap{\usebox\myboxA}{\hskip 0.5\mylenA\usebox\myboxB}%
+    \fi}
+
+% https://tex.stackexchange.com/a/154773
+\newcommand{\xfill}[2][1ex]{{%
+    \dimen0=#2\advance\dimen0 by #1
+    \leaders\hrule height \dimen0 depth -#1\hfill%
+}}
+
+%%%%%%%% Text %%%%%%%%
+
+% TODO: Macro for list with blacktriangle
+
+%% Inclusive language %%
+
+% \medpt \medianpoint \interpunct    
+\newcommand{\medpt}{\ensuremath{\cdot}}
+% If you want a "protected" space after text macros prefer use a empty statement {}
+% as so: to write "utilisateur•trice oui": "\user{} oui"
+% Instead of "\user\ oui"
+% as so: to write "utilisateur•trice, oui": "\user, oui"
+\newcommand{\user}{utilisateur\medpt trice} % utilisateurice
+\newcommand{\users}{\user\medpt s}
+% DOC: attaquant•e = intrus•e ou usager•gère
+\newcommand{\att}{attaquant\medpt e}
+\newcommand{\atts}{\att\medpt s}
+
+%% Miscellaneous %%
+
+\newcommand{\lf}{Langages Formels}
+\newcommand{\lpo}{Logique du premier ordre}
+\newcommand{\MSO}{Monadique du Second-Ordre}
+\newcommand{\MSOs}{Monadiques du Second-Ordre}
+
+%%%%%%% Maths %%%%%%%
+
+\renewcommand{\>}{\geqslant}
+\newcommand{\<}{\leqslant}
+
+\newcommand{\A}{\mathcal{A}}
+
+\newcommand{\predicate}{\ensuremath{P}}
+\newcommand{\MU}{\ensuremath{mu}}
+
+\newcommand{\prm}{'}
+\newcommand{\SigStar}{\Sigma^{*}}
+\newcommand{\SigA}{\Sigma_{\A}}
+\newcommand{\SigC}{\Sigma_{c}}
+\newcommand{\SigUC}{\Sigma_{uc}}
+\newcommand{\SigO}{\Sigma_{o}}
+\newcommand{\comp}{^{\complement}}
+
+\newcommand{\proj}{P} % \Pi or \pi or P
+\newcommand{\projA}{\ensuremath{\proj_{\A}}}
+\newcommand{\projInv}{\ensuremath{\proj^{-1}}}
+
+\newcommand{\mask}{M}
+\newcommand{\maskO}{\ensuremath{\mask_{\Sigma_{o}}}}
+\newcommand{\maskInv}{\ensuremath{\mask^{-1}}}
+\newcommand{\maskA}{\ensuremath{\mask_{\A}}}
+\newcommand{\maskAInv}{\ensuremath{\mask_{\A}^{-1}}}
+
+%%%%% Quantifier %%%%%
+
+\newcommand{\foralleg}{\forall^{leg}}
+\newcommand{\existsleg}{\exists^{leg}}
+
+%%%%%% Opacity %%%%%%
+
+% I'm not sure if ensure math is a good habit
+% but just in case we use it in a blank text
+
+\newcommand{\lang}{\ensuremath{L}}
+\newcommand{\langS}{\ensuremath{S}} % Or \varPhi
+\newcommand{\langSecret}{\ensuremath{Secret}}
+
+\newcommand{\C}{\ensuremath{C}} % Contrôleur C
+\newcommand{\K}{\ensuremath{K}} % Lang à contrôler
+
+%% Predicates %%
+
+\newcommand{\s}[1]{\ensuremath{secret(#1)}}
+\newcommand{\Op}[1]{\ensuremath{Opaque(#1)}}
+\newcommand{\D}[1]{\ensuremath{Disclosed(#1)}}
+\newcommand{\Ditp}[1]{\ensuremath{DisclosedInThePast(#1)}}
+
+%% Languages %%
+
+\newcommand{\OpL}{\ensuremath{Opaque^{\lang}}}
+\newcommand{\DL}{\ensuremath{Disclosed^{\lang}}}
+\newcommand{\DitpL}{\ensuremath{DisclosedInThePast^{\lang}}}
+\newcommand{\UnDL}{\ensuremath{UnDisclosed^{\lang}}}
+% \newcommand{\UnDL}{\ensuremath{(\DitpL)\comp}}
+\newcommand{\supop}{\ensuremath{sup_{\langS}(L)}}
+
+%%%%%% Control %%%%%%
+
+\newcommand{\succStarUC}{\ensuremath{succ^{*}_{\SigUC}}}
+\newcommand{\good}{\ensuremath{Good}} % Could be P(x) instead of Good(x)
+\newcommand{\Cont}[1]{\ensuremath{Controllable(#1)}}
+\newcommand{\supC}[1]{\ensuremath{sup_{C}(#1)}} % Greatest Controllable 
+
+\newcommand{\V}{\ensuremath{V}} % Logic Greatest Controllable 
+
+%%%%%% Normality %%%%%%
+
+\newcommand{\Normal}[1]{\ensuremath{Normal(#1)}}
+\newcommand{\NotNormal}[1]{\ensuremath{NotNormal(#1)}}
+\newcommand{\supN}[1]{\ensuremath{sup_{N}(#1)}} % Greatest Controllable 
+
+%%%%%% Example %%%%%%
+
+\newcommand{\contaminate}{\ensuremath{C}} % entrer dans une salle contaminée
+\newcommand{\clean}{\ensuremath{D}} % sortir du sas après s'être désinfecter
+\newcommand{\door}{\ensuremath{P}} % sortir du sas sans se désinfecter
+\newcommand{\elevator}{\ensuremath{A}}
+
+% -------------------------------------------------------------------------- %
+%                                 Formatting                                 %
+% -------------------------------------------------------------------------- %
+
+\newcounter{state}
+\newcommand{\initstate}{\setcounter{state}{0}}
+\newcommand{\state}[1]{
+    \stepcounter{state}\textbf{State \thestate{} :} \emph{#1} \par
+}
+
+\numberwithin{equation}{section}
+
+% -------------------------------------------------------------------------- %
+%                                Environnments                               %
+% -------------------------------------------------------------------------- %
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+
+\theoremstyle{plain}
+\newtheorem{corollary}{Corollary}[theorem]
+
+\theoremstyle{plain}
+\newtheorem{lemma}{Lemma}[theorem]
+
+\theoremstyle{plain} % definition
+\newtheorem{definition}{Definition}
+
+\theoremstyle{plain}
+\newtheorem{proposition}{Proposition}[definition]
+
+\newtheorem{property}{Property}[definition]
+
+\newtheorem{ex}{Example}
+\theoremstyle{remark}
+\newtheorem*{rem}{Remark}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

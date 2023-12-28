@@ -1,0 +1,47 @@
+% -------------------------------------------------------------------------- %
+%                              Language settings                             %
+% -------------------------------------------------------------------------- %
+\usepackage[english]{babel} % french
+\usepackage[autolanguage]{numprint}
+\usepackage[T1]{fontenc}
+
+% -------------------------------------------------------------------------- %
+%                          Set page size and margins                         %
+% -------------------------------------------------------------------------- %
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% -------------------------------------------------------------------------- %
+%                                    item                                    %
+% -------------------------------------------------------------------------- %
+\usepackage{enumitem}
+
+% -------------------------------------------------------------------------- %
+%                                    Math                                    %
+% -------------------------------------------------------------------------- %
+\usepackage{amsthm}
+\usepackage{amsmath,amssymb}
+% \RequirePackage{amsmath,amsthm} % in case of theoremfont
+% \RequirePackage[scaled=.97,helvratio=.93,p]{newpxtext}
+
+% -------------------------------------------------------------------------- %
+%                                  Graphics                                  %
+% -------------------------------------------------------------------------- %
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{caption}
+\usepackage{subcaption}
+%%%% Graphs %%%%
+\usepackage{tikz}
+\usetikzlibrary{automata, arrows.meta, arrows, positioning}
+\usepackage{pgfplots} % technical graphics
+\pgfplotsset{width=10cm,compat=1.9}
+
+% -------------------------------------------------------------------------- %
+%                                 Text Format                                %
+% -------------------------------------------------------------------------- %
+% Float pkg to include Figure in Multicol with [H] Flag
+\usepackage{multicol, float} % http://ctan.org/pkg/{multicol,float}
+\usepackage{listings}
+\usepackage{minted} % Code
+\usepackage{xhfill} % AutoFill Line % http://ctan.org/pkg/xhfill

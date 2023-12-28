@@ -1,0 +1,76 @@
+\documentclass{article} %[12pt] %report but section now start at 0.1
+
+\usepackage{packages, macros}
+
+\begin{document}
+
+% !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+        \Huge
+        \textbf{Data science and SGBD:}
+
+        \Huge
+        \textbf{"server" VS "in-process"}
+
+        \vspace{0.5cm}
+        \LARGE
+        Data Base lab session report - First year of a Master's degree in computer science
+        \vspace{1.5cm}
+
+        \textbf{Florian EPAIN}
+
+        \text{florian.epain@irisa.fr}
+
+        \vspace{12cm}
+        \text{December 28, 2023}
+
+        \vspace{0.5cm}
+        \begin{figure}[hb]
+            \centering
+            \includegraphics[width=8cm]{../assets/logos/logoUnivRennes.png}
+        \end{figure}
+
+    \end{center}
+
+    % \begin{abstract}
+    %     It's probably indigestible but I put my heart into it.
+    % \end{abstract}
+\end{titlepage}
+
+
+
+\tableofcontents
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{Introduction}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{Comparison}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \input{Diagnosticability}
+% \input{Safety}
+% \input{Friendly_Reminder}
+% \input{Scientific_Lecture}
+
+\clearpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% \nocite{*} % Display all ref which wasn't cited
+\bibliographystyle{alpha}
+% \bibliography{LogicForOpacity}
+
+
+\end{document}

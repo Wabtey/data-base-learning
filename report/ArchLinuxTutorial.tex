@@ -1,0 +1,21 @@
+To run pgadmin4 on archlinux you need to: (ohoh)
+from \href{https://www.atlantic.net/dedicated-server-hosting/how-to-install-pgadmin-on-arch-linux/}
+
+\begin{itemize}[label=\(\blacktriangleright\)]
+    \item pacman -S postgresql
+    \item remove all data in /var/lib/postgres/data
+    \item sudo -u postgres initdb --locale en_US.UTF-8 -D /var/lib/postgres/data
+    \item systemctl start postgresql
+    \item sudo -u postgres -i
+          \begin{itemize}[label=\(\blacktriangleright\)]
+              \item psql -c "alter user postgres with password '(PostgresItNeedToStop)'"
+              \item exit
+          \end{itemize}
+    \item pipx install pgadmin4
+    \item pgadmin4
+          \begin{itemize}[label=\(\blacktriangleright\)]
+              \item create your account
+              \item create your server (localhost, port=5432, username, password)
+              \item create your database
+          \end{itemize}
+\end{itemize}
