@@ -1,0 +1,72 @@
+\section{Queries}\label{sec:queries}
+
+% TODO: translate queries
+
+\subsection{Restrictions}\label{subsec:restrictions}
+
+% \textbf{R.0}: \mbox{\mint{sql}|SELECT * FROM TripData WHERE medallion = '0B57B9633A2FECD3D3B1944AFC7471CF';|}
+
+% \begin{minipage}{0.1\textwidth}
+%     \textbf{R.0}:
+% \end{minipage}%
+% \begin{minipage}{0.5\textwidth}
+%     \mint{sql}|SELECT * FROM TripData WHERE medallion = '0B57B9633A2FECD3D3B1944AFC7471CF';|
+% \end{minipage}
+
+\textbf{R.0}: Les trajets effectués par le chauffeur dont le \textbf{medallion} est \textit{0B57B9633A2FECD3D3B1944AFC7471CF}.
+\begin{minted}{sql}
+    SELECT * FROM TripData WHERE medallion = '0B57B9633A2FECD3D3B1944AFC7471CF';
+\end{minted}
+
+% \noindent\textbf{R.1}: \mbox{\mint{sql}|SELECT * FROM TripData WHERE passenger_count >= 2;|}
+
+\noindent\textbf{R.1}: Les trajets pour lesquels \textbf{passenger\_count} est supérieur ou égal à 2.
+\begin{minted}{sql}
+    SELECT * FROM TripData WHERE passenger_count >= 2;
+\end{minted}
+
+
+% \noindent\textbf{R.2}: \mbox{\mint{sql}|SELECT * FROM TripData WHERE passenger_count = 1;|}
+
+\noindent\textbf{R.2}: Les trajets pour lesquels \textbf{passenger\_count} est égal à 1.
+\begin{minted}{sql}
+    SELECT * FROM TripData WHERE passenger_count = 1;
+\end{minted}
+
+\subsection{Aggregates}\label{subsec:aggregates}
+
+\textbf{A.0}: La distance totale cumulée effectuée par l'ensemble des trajets en taxi.
+\begin{minted}{sql}
+    SELECT SUM(trip_distance)
+    FROM TripData;
+\end{minted}
+
+\textbf{A.1}: Pour chaque medallion, la distance moyenne effectuée pour les trajets avec un unique passager.
+\begin{minted}{sql}
+    SELECT medallion, AVG(trip_distance)
+    FROM TripData
+    WHERE passenger_count = 1
+    GROUP BY medallion;
+\end{minted}
+
+\noindent\textbf{A.2}: Pour chaque jour, le nombre de passagers moyen.
+\begin{minted}{sql}
+    SELECT AVG(passenger_count)
+    FROM TripData
+    GROUP BY pickup_datetime;
+\end{minted}
+
+\noindent\textbf{A.3}: Pour chaque chauﬀeur dont la distance moyenne parcourue est supérieur à la moyenne des distances, le nombre moyen de passagers par trajet
+\begin{minted}{sql}
+    SELECT avg_pass_count
+    FROM (
+        SELECT
+            medallion,
+            AVG(passenger_count) as avg_pass_count,
+            AVG(trip_distance) as avg_trip_dist
+        FROM TripData GROUP BY medallion
+    ) as taxisStats
+    WHERE avg_trip_dist > (
+        SELECT AVG(trip_distance) FROM TripData
+    );
+\end{minted}
